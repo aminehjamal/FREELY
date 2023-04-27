@@ -1,0 +1,1 @@
+import FavoriteIcon from '@mui/icons-material/Favorite';

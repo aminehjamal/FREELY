@@ -1,4 +1,5 @@
 import * as React from "react";
+import { Link as ReactLink } from 'react-router-dom';
 import Button from "@mui/material/Button";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
@@ -9,41 +10,24 @@ import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import FeaturedPost from "./FeaturedPost";
-import {featuredPosts} from "./data";
-
-
+import { featuredPosts } from "./data";
 
 function HomeScreen() {
-  
-
   const footers = [
     {
-      title: 'Company',
-      description: ['Team', 'History', 'Contact us', 'Locations'],
+      title: "Company",
+      description: ["Team", "History", "Contact us"],
     },
+
     {
-      title: 'Features',
-      description: [
-        'Cool stuff',
-        'Random feature',
-        'Team feature',
-        'Developer stuff',
-        'Another one',
-      ],
-    },
-    {
-      title: 'Resources',
-      description: ['Resource', 'Resource name', 'Another resource', 'Final resource'],
-    },
-    {
-      title: 'Legal',
-      description: ['Privacy policy', 'Terms of use'],
+      title: "Legal",
+      description: ["Privacy policy", "Terms of use"],
     },
   ];
 
   return (
     <React.Fragment>
-   {/*Hero*/}
+      {/*Hero*/}
       <main>
         <Box
           sx={{
@@ -68,24 +52,27 @@ function HomeScreen() {
               color="text.secondary"
               paragraph
             >
-              Welcome to our free items website. Discover a wide range of essential items for FREE, donated by generous individuals who want to make a positive impact on their communities.
-              
-              Browse by category, location or keyword and find what you're looking for today.
+              Welcome to our free items website.<br></br>{" "}
+              <span style={{ fontSize: "1rem" }}>
+                Discover a wide range of essential items for FREE, donated by
+                generous individuals who want to make a positive impact on our
+                community.<br></br>Browse by category, location or keyword and
+                find what you're looking for today.
+              </span>
             </Typography>
-           
           </Container>
         </Box>
       </main>
       {/**features*/}
-       <Container maxWidth="lg">
-              <Grid container spacing={4}>
-          {featuredPosts.map((post) => (
+      <Container maxWidth="lg">
+        <Grid container spacing={4}>
+          {featuredPosts.slice(0, 3).map((post) => (
             <FeaturedPost key={post.title} post={post} />
           ))}
         </Grid>
-        </Container>
+      </Container>
 
-        <Container
+      <Container
         maxWidth="md"
         component="footer"
         sx={{
@@ -93,21 +80,23 @@ function HomeScreen() {
           mt: 8,
           py: [3, 6],
         }}
-      >       
+      >
+        {" "}
+        <Stack
+          sx={{ pt: 4 }}
+          direction="row"
+          spacing={2}
+          justifyContent="center"
+        >
+          <Button 
+          component={ReactLink}
+          to="/listing"
+          variant="contained" color="secondary">
+            View more
+          </Button>
+        </Stack>
       </Container>
-      <Stack
-              sx={{ pt: 4 }}
-              direction="row"
-              spacing={2}
-              justifyContent="center"
-            >
-              <Button variant="contained">View more</Button>
-              
-            </Stack>
-
     </React.Fragment>
-
-    
   );
 }
 
